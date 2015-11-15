@@ -9,6 +9,7 @@ describe SnpVkApi::Group, vcr: true do
   it { should respond_to :user_id }
   it { should respond_to :token }
   it { should respond_to :post_ids }
+  it { subject.members.should_not be_empty }
 
   context 'user' do
     it('is member') { subject.member?.should be true }

@@ -62,6 +62,11 @@ module SnpVkApi
       vk_client.groups.is_member(group_id: id.abs, user_id: user_id) == 1
     end
 
+    # Members[] ids
+    def members
+      vk_client.groups.get_members(group_id: id.abs).users
+    end
+
     private
 
     def posts
