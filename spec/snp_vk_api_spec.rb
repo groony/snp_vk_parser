@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe SnpVkApi do
   it 'has a version number' do
-    expect(SnpVkApi::VERSION).not_to be nil
-  end
-
-  it 'does something useful' do
-    expect(false).to eq(true)
+    SnpVkApi::VERSION.should_not be nil
   end
 end
