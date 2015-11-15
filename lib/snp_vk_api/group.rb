@@ -24,6 +24,17 @@ module SnpVkApi
       count
     end
 
+    # Count user likes in group posts
+    def posts_user_like_count
+      count = 0
+      posts.map do |p|
+        vk_client.likes.get_list(owner_id: id, type: 'post', item_id: p.id).users.each do |u|
+          count += 1 if u == user_id
+        end
+      end
+      count
+    end
+
     private
 
     def posts
