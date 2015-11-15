@@ -35,6 +35,17 @@ module SnpVkApi
       count
     end
 
+    # Count user reposts in group posts
+    def posts_user_repost_count
+      count = 0
+      posts.map do |p|
+        vk_client.wall.get_reposts(owner_id: id, post_id: p.id).profiles.each do |u|
+          count += 1 if u.uid == user_id
+        end
+      end
+      count
+    end
+
     private
 
     def posts
