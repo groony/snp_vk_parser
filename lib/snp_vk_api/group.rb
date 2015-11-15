@@ -1,10 +1,16 @@
 require 'vkontakte_api'
 
 module SnpVkApi
+  # Class for work with group and user in group.
   class Group
     attr_reader :vk_client
     attr_accessor :id, :user_id, :token, :post_ids
 
+    # Initialize.
+    # @param [Integer] id Group id.
+    # @param [Integer] user_id User id.
+    # @param [Array] post_ids Array of post ids.
+    # @param [String] token Access token.
     def initialize(id, user_id = nil, post_ids = nil, token = nil)
       @vk_client = token.nil? ? VkontakteApi::Client.new : VkontakteApi::Client.new(token)
       @id = id.to_i
@@ -12,7 +18,8 @@ module SnpVkApi
       @post_ids = post_ids
     end
 
-    # Count user comments in posts
+    # Count user comments in posts.
+    # @return [Integer] Ammount of comments.
     def posts_user_comment_count
       count = 0
       posts.map do |p|
@@ -24,7 +31,8 @@ module SnpVkApi
       count
     end
 
-    # Count user likes in posts
+    # Count user likes in posts.
+    # @return [Integer] Ammount of likes.
     def posts_user_like_count
       count = 0
       posts.map do |p|
@@ -35,7 +43,8 @@ module SnpVkApi
       count
     end
 
-    # Count user reposts in posts
+    # Count user reposts in posts.
+    # @return [Integer] Ammount of reposts.
     def posts_user_repost_count
       count = 0
       posts.map do |p|
@@ -46,7 +55,8 @@ module SnpVkApi
       count
     end
 
-    # Count user photos in albums
+    # Count user photos in albums.
+    # @return [Integer] Ammount of photos.
     def albums_user_photo_count
       count = 0
       albums.each do |a|
@@ -57,22 +67,25 @@ module SnpVkApi
       count
     end
 
-    # Check user is member
+    # Check user is member.
+    # @return [Boolean]
     def member?
       vk_client.groups.is_member(group_id: id.abs, user_id: user_id) == 1
     end
 
-    # Members[] ids
+    # Members ids.
+    # @return [Array] Array of user ids.
     def members
       vk_client.groups.get_members(group_id: id.abs).users
     end
 
     private
 
+    # Get posts.
+    # @return [Array] Array of posts.
     def posts
       if post_ids.nil?
         posts = vk_client.wall.get(owner_id: id)
-        @post_count = posts[0]
         posts.shift
       else
         posts = vk_client.wall.getById(posts: post_ids_string)
@@ -81,10 +94,14 @@ module SnpVkApi
       posts
     end
 
+    # Convert post ids to string.
+    # @return [String] Post ids with owner.
     def post_ids_string
       post_ids.map { |p| "#{id}_#{p}" }.join ','
     end
 
+    # Get albums.
+    # @return [Array] Array of albums.
     def albums
       vk_client.photos.get_albums(owner_id: id)
     end
