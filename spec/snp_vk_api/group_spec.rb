@@ -10,6 +10,11 @@ describe SnpVkApi::Group, vcr: true do
   it { should respond_to :token }
   it { should respond_to :post_ids }
 
+  context 'user' do
+    it('is member') { subject.member?.should be true }
+    it('is not member') { user_without_data.member?.should be false }
+  end
+
   context 'albums_user_photo_count' do
     let(:user_with_data) { build(:all_posts, user_id: 185_043_623) }
 

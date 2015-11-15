@@ -57,6 +57,11 @@ module SnpVkApi
       count
     end
 
+    # Check user is member
+    def member?
+      vk_client.groups.is_member(group_id: id.abs, user_id: user_id) == 1
+    end
+
     private
 
     def posts
