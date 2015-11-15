@@ -12,7 +12,7 @@ module SnpVkApi
       @post_ids = post_ids
     end
 
-    # Count user comments in group posts
+    # Count user comments in posts
     def posts_user_comment_count
       count = 0
       posts.map do |p|
@@ -24,7 +24,7 @@ module SnpVkApi
       count
     end
 
-    # Count user likes in group posts
+    # Count user likes in posts
     def posts_user_like_count
       count = 0
       posts.map do |p|
@@ -35,12 +35,23 @@ module SnpVkApi
       count
     end
 
-    # Count user reposts in group posts
+    # Count user reposts in posts
     def posts_user_repost_count
       count = 0
       posts.map do |p|
         vk_client.wall.get_reposts(owner_id: id, post_id: p.id).profiles.each do |u|
           count += 1 if u.uid == user_id
+        end
+      end
+      count
+    end
+
+    # Count user photos in albums
+    def albums_user_photo_count
+      count = 0
+      albums.each do |a|
+        vk_client.photos.get(owner_id: a.owner_id, album_id: a.aid).each do |p|
+          count += 1 if p.user_id == user_id
         end
       end
       count
@@ -62,6 +73,10 @@ module SnpVkApi
 
     def post_ids_string
       post_ids.map { |p| "#{id}_#{p}" }.join ','
+    end
+
+    def albums
+      vk_client.photos.get_albums(owner_id: id)
     end
   end
 end
