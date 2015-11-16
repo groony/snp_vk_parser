@@ -24,7 +24,7 @@ Or install it yourself as:
 ### Group user activity
 
 ```ruby
-vk_group = SnpParseVk::Group.new(group_id, user_id, post_ids, token)
+vk_group = SnpParseVk::Group.new(id: group_id, user_id: user_id, post_ids: post_ids, token: token)
 ```
 
 Check membership
