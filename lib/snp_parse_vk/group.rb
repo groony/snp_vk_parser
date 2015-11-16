@@ -6,6 +6,11 @@ module SnpParseVk
     attr_reader :vk_client
     attr_accessor :id, :user_id, :token, :post_ids, :album_ids
 
+    # Initialize.
+    def initialize(params = {})
+      params.each { |key, value| instance_variable_set("@#{key}", value) }
+    end
+
     # Vk client.
     def vk_client
       @vk_client =
