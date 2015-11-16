@@ -7,7 +7,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'snp_vk_parser'
+gem 'snp_vk_parser', github: 'groony/snp-vk-parser'
 ```
 
 And then execute:
