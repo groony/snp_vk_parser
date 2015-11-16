@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = ''
   spec.license       = 'MIT'
 
-  spec.add_runtime_dependency 'vkontakte-api', '~> 1.4'
+  spec.add_runtime_dependency 'vkontakte_api', '~> 1.4'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
