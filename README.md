@@ -43,23 +43,23 @@ vk_group.members
 
 - ##### In posts:
 
-	- ```ruby
-	vk_group.posts_user_comment_count
-	```
+```ruby
+vk_group.posts_user_comment_count
+```
 
-	- ```ruby
-	vk_group.posts_user_like_count
-	```
+```ruby
+vk_group.posts_user_like_count
+```
 
-	- ```ruby
-	vk_group.posts_user_repost_count
-	```
+```ruby
+vk_group.posts_user_repost_count
+```
 
 - ##### In albums:
 
-	- ```ruby
-	vk_group.albums_user_photo_count
-	```
+```ruby
+vk_group.albums_user_photo_count
+```
 
 ## Development
 
