@@ -1,6 +1,6 @@
 require 'vkontakte_api'
 
-module SnpParseVk
+module SnpVkParser
   # Class for work with group and user in group.
   class Group
     attr_reader :vk_client
@@ -13,12 +13,7 @@ module SnpParseVk
 
     # Vk client.
     def vk_client
-      @vk_client =
-        if token.nil?
-          VkontakteApi::Client.new
-        else
-          VkontakteApi::Client.new token
-        end
+      @vk_client = VkontakteApi::Client.new token
     end
 
     # Count user comments in posts.

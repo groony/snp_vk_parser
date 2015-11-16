@@ -1,18 +1,18 @@
 FactoryGirl.define do
-  factory :all_posts, class: SnpParseVk::Group do
+  factory :all_posts, class: SnpVkParser::Group do
     skip_create
     id(-554_031_06)
     user_id 197_843_786
   end
 
-  factory :specific_posts, class: SnpParseVk::Group do
+  factory :specific_posts, class: SnpVkParser::Group do
     skip_create
     id(-554_031_06)
     user_id 322_349_840
     post_ids [284_279]
   end
 
-  factory :specific_albums, class: SnpParseVk::Group do
+  factory :specific_albums, class: SnpVkParser::Group do
     skip_create
     id(-554_031_06)
     user_id 197_843_786

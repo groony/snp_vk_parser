@@ -1,7 +1,7 @@
 require 'simplecov'
 SimpleCov.start
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'snp_parse_vk'
+require 'snp_vk_parser'
 require 'vcr'
 require 'webmock/rspec'
 require 'factory_girl'

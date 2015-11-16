@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SnpParseVk::Group, vcr: true do
+describe SnpVkParser::Group, vcr: true do
   let(:subject) { build(:all_posts) }
   let(:user_without_data) { build(:all_posts, user_id: 1) }
 
