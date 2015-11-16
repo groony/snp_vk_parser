@@ -41,7 +41,7 @@ vk_group.members
 
 #### Counters:
 
-- ##### In posts:
+- In posts:
 
 ```ruby
 vk_group.posts_user_comment_count
@@ -55,7 +55,7 @@ vk_group.posts_user_like_count
 vk_group.posts_user_repost_count
 ```
 
-- ##### In albums:
+- In albums:
 
 ```ruby
 vk_group.albums_user_photo_count
