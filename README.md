@@ -1,5 +1,7 @@
 # SnpVkParser
 
+[![Gem Version](https://badge.fury.io/rb/snp_vk_parser.svg)](https://badge.fury.io/rb/snp_vk_parser)
+
 ![Salt & Pepper](https://avatars3.githubusercontent.com/u/9194399?v=3&amp;s=100)
 
 ## Installation
