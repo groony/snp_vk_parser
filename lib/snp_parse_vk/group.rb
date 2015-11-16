@@ -1,15 +1,13 @@
 require 'vkontakte_api'
 
-module SnpVkApi
+module SnpParseVk
   # Class for work with group and user in group.
   class Group
     attr_reader :vk_client
     attr_accessor :id, :user_id, :token, :post_ids, :album_ids
 
-    # Set id and initialize vk client.
-    # @param [Integer] id Group id.
-    def id=(id)
-      @id = id
+    # Vk client.
+    def vk_client
       @vk_client =
         if token.nil?
           VkontakteApi::Client.new

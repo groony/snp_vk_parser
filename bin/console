@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'snp_vk_api'
+require 'snp_parse_vk'
 require 'irb'
 IRB.start

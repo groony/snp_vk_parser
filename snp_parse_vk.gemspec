@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'snp_vk_api/version'
+require 'snp_parse_vk/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'snp_vk_api'
-  spec.version       = SnpVkApi::VERSION
+  spec.name          = 'snp_parse_vk'
+  spec.version       = SnpParseVk::VERSION
   spec.authors       = ['Ivan Novikov']
   spec.email         = ['ivan.novikov@saltpepper.ru']
 

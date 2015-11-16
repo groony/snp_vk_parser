@@ -1,4 +1,4 @@
-# SnpVkApi
+# SnpParseVk
 
 ![Salt & Pepper](https://avatars3.githubusercontent.com/u/9194399?v=3&amp;s=100)
 
@@ -7,7 +7,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'snp_vk_api'
+gem 'snp_parse_vk'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install snp_vk_api
+    $ gem install snp_parse_vk
 
 ## Usage
 
@@ -24,7 +24,7 @@ Or install it yourself as:
 ### Group user activity
 
 ```ruby
-vk_group = SnpVkApi::Group.new(group_id, user_id, post_ids, token)
+vk_group = SnpParseVk::Group.new(group_id, user_id, post_ids, token)
 ```
 
 Check membership
@@ -69,7 +69,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/groony/snp_vk_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/groony/snp_parse_vk. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
