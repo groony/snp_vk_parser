@@ -4,18 +4,18 @@ module SnpVkApi
   # Class for work with group and user in group.
   class Group
     attr_reader :vk_client
-    attr_accessor :id, :user_id, :token, :post_ids
+    attr_accessor :id, :user_id, :token, :post_ids, :album_ids
 
-    # Initialize.
+    # Set id and initialize vk client.
     # @param [Integer] id Group id.
-    # @param [Integer] user_id User id.
-    # @param [Array] post_ids Array of post ids.
-    # @param [String] token Access token.
-    def initialize(id, user_id = nil, post_ids = nil, token = nil)
-      @vk_client = token.nil? ? VkontakteApi::Client.new : VkontakteApi::Client.new(token)
-      @id = id.to_i
-      @user_id = user_id.to_i
-      @post_ids = post_ids
+    def id=(id)
+      @id = id
+      @vk_client =
+        if token.nil?
+          VkontakteApi::Client.new
+        else
+          VkontakteApi::Client.new token
+        end
     end
 
     # Count user comments in posts.
@@ -84,12 +84,11 @@ module SnpVkApi
     # Get posts.
     # @return [Array] Array of posts.
     def posts
-      if post_ids.nil?
+      if post_ids.respond_to?(:each) && post_ids.any?
+        posts = vk_client.wall.getById(posts: post_ids_string)
+      else
         posts = vk_client.wall.get(owner_id: id)
         posts.shift
-      else
-        posts = vk_client.wall.getById(posts: post_ids_string)
-        @post_count = posts.size
       end
       posts
     end
@@ -103,7 +102,11 @@ module SnpVkApi
     # Get albums.
     # @return [Array] Array of albums.
     def albums
-      vk_client.photos.get_albums(owner_id: id)
+      if album_ids.respond_to?(:each) && album_ids.any?
+        vk_client.photos.get_albums(owner_id: id, album_ids: album_ids.join(','))
+      else
+        vk_client.photos.get_albums(owner_id: id)
+      end
     end
   end
 end
